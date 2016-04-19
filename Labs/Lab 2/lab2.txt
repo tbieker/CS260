@@ -1,0 +1,39 @@
+//Author: Tyler Bieker
+//Class: CS260
+//Assignment: Lab 2
+//Date: 04/04/2016
+//Sources: Course Textbook
+
+bool LinkedList::del(char ch){
+	node * curr = head;
+	node * prev = NULL;
+	
+	while(curr->next != NULL && curr->item != ch){
+		prev = curr;
+		curr = curr->next;
+		prev->next = curr;
+	}
+	
+	if(curr->item == ch){
+		//ch = head
+		if(prev == NULL){
+			head = curr->next;
+			curr = NULL;
+			delete curr;
+			return true;
+		}
+		prev->next = curr->next;
+		curr = NULL;
+		delete curr;
+		return true;
+	}
+}
+
+xyz
+found y
+xz
+did not find y
+z
+did not find y
+
+did not find y
