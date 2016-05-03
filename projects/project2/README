@@ -13,35 +13,34 @@ houses were seen. As a result, the client will be ready to make any offers desir
 arrives back at the office.
 
 The information about each house must include:
-  address (e.g. 12345 SW 9th, Beaverton)
-  square footage (e.g. 1899)
-  number of bedrooms (e.g. 3)
-  number of bathrooms (e.g. 2.1) -- 2.1 means 2 1/2 baths!
-  description of any special features about the house (e.g. backs onto green space)
+    -address (e.g. 12345 SW 9th, Beaverton)
+    -square footage (e.g. 1899)
+    -number of bedrooms (e.g. 3)
+    -number of bathrooms (e.g. 2.1) -- 2.1 means 2 1/2 baths!
+    -description of any special features about the house (e.g. backs onto green space)
 
 Implementation Requirements:
-  -Create a house class to model the house object.
-  -Make sure you encapsulate the the data, i.e. put data members in private
-    section of the class.
-  -Use char * to model strings instead of string .
-  -Create a queue class to manage the houses you plan to visit on your way out.
-   	The queue class can be implemented by any data structure you want.
-    The queue class needs to provide operations to:
-      enqueue a house
-      dequeue a house
-      display all the houses
-  -Create a stack class to manage the houses you plan to revisit on your way back.
-    The stack class can be implemented by any data structure you want.
-    The stack class needs to provide operations to:
-      push a house
-      pop a house
-      display all the houses
+    -Create a house class to model the house object.
+    -Make sure you encapsulate the the data, i.e. put data members in private section of the class.
+    -Use char * to model strings instead of string .
+    -Create a queue class to manage the houses you plan to visit on your way out.
+       	The queue class can be implemented by any data structure you want.
+        The queue class needs to provide operations to:
+          enqueue a house
+          dequeue a house
+          display all the houses
+    -Create a stack class to manage the houses you plan to revisit on your way back.
+        The stack class can be implemented by any data structure you want.
+        The stack class needs to provide operations to:
+            push a house
+            pop a house
+            display all the houses
 
 You are required to provide the following functions in both of above classes if
 dynamically allocated memory is used:
-  -constructors including copy constructor.
-  -destructor. Use valgrind to check you don't have memory leaks.
-  -overload '=' operator so that a "deep copy" will be obtained.
+    -constructors including copy constructor.
+    -destructor. Use valgrind to check you don't have memory leaks.
+    -overload '=' operator so that a "deep copy" will be obtained.
 
 The client program needs to provide a menu-based command line user interface.
 All the keyboard input should be done in the client program instead of the ADT.
