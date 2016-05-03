@@ -26,9 +26,9 @@ Implementation Requirements:
     -Create a queue class to manage the houses you plan to visit on your way out.
        	The queue class can be implemented by any data structure you want.
         The queue class needs to provide operations to:
-          enqueue a house
-          dequeue a house
-          display all the houses
+            enqueue a house
+            dequeue a house
+            display all the houses
     -Create a stack class to manage the houses you plan to revisit on your way back.
         The stack class can be implemented by any data structure you want.
         The stack class needs to provide operations to:
