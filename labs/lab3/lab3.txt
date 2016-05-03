@@ -1,0 +1,27 @@
+bool LinkedList::del(node *& first, char ch, node *& prev){
+	if(!first){	//end of list and not found
+		return false;
+	}else{
+		if(first->data == ch){
+			if(prev == NULL){  //delete head
+				head = first->next;
+			}
+			else{
+				prev->next = first->next;
+			}
+			delete first;
+			first = NULL;
+			return true;
+		}
+		else{
+			del(first->next, ch, first);
+		}
+	}
+xyz
+found y
+x
+did not find y
+Empty
+did not find y
+Empty
+did not find y
