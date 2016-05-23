@@ -1,0 +1,56 @@
+//Author: Tyler Bieker
+//Class: CS260
+//Assignment: Lab 5
+//Date: 05/23/2016
+//Sources: None
+
+//recursive functions
+
+int countR(node * head){
+    node * curr;
+    curr = head;
+    return recursiveCount(head, curr);
+}
+
+int recursiveCount(node * head, node * curr){
+    int count = 0;
+    if(curr->next != head){
+        count = 1 + recursiveCount(head, curr->next);
+        return count;
+    }else{
+        return 1;
+    }
+}
+
+int sumR(node * head){
+    int result;
+    node * curr = head;
+    result = recursiveSum(head, curr);
+    return result;
+}
+
+int recursiveSum(node * head, node * curr){
+    int result;
+    if(curr->next != head){
+        result = curr->data + recursiveSum(head, curr->next);
+        return result;
+    }
+    else{
+        result = curr->data;
+        return result;
+    }
+}
+Here is the original list: 2 -> 6 -> 60 -> 60 -> 5 -> 43 -> 54 -> 75 -> 2 -> 15 -> 2 -> 27 -> 66 -> 58 -> 2
+
+This list contains 15 number of items
+Iterative count: 15
+Recursive count: 15
+Iterative sum: 477
+Recursive sum: 477
+
+
+The resulting list is... 2 -> 6 -> 60 -> 60 -> 5 -> 43 -> 54 -> 75 -> 2 -> 15 -> 2 -> 27 -> 66 -> 58 -> 2
+
+This list contains 15 number of items
+The sum of all data is: 477
+# nodes freed: 15
