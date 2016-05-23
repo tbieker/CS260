@@ -1,0 +1,55 @@
+CS260 Data Structure Project 2
+Programming Assignment Specifications:
+You have been hired by a real estate firm to assist their agents with the process of showing
+houses for their clients. The agents were frustrated this last summer because many houses were
+sold as soon as they were placed on the market. This means that clients need a way to quickly
+preview houses available that meet their criteria, and then revisit them just as quickly.
+Here is your idea. A real estate agent will enter into your system the houses they want to visit--in
+the order that makes the most sense. Your program will enqueue these and as the houses are seen,
+they will be dequeued. Any house that is of interest to the client--can be revisited on their way
+back to the office; these get pushed onto a stack. This way, on the return trip, houses can be
+popped off the stack for easy retrieval--getting them in just the opposite order in which the
+houses were seen. As a result, the client will be ready to make any offers desired when he/she
+arrives back at the office.
+
+The information about each house must include:
+    -address (e.g. 12345 SW 9th, Beaverton)
+    -square footage (e.g. 1899)
+    -number of bedrooms (e.g. 3)
+    -number of bathrooms (e.g. 2.1) -- 2.1 means 2 1/2 baths!
+    -description of any special features about the house (e.g. backs onto green space)
+
+Implementation Requirements:
+    -Create a house class to model the house object.
+    -Make sure you encapsulate the the data, i.e. put data members in private section of the class.
+    -Use char * to model strings instead of string .
+    -Create a queue class to manage the houses you plan to visit on your way out.
+       	The queue class can be implemented by any data structure you want.
+        The queue class needs to provide operations to:
+            enqueue a house
+            dequeue a house
+            display all the houses
+    -Create a stack class to manage the houses you plan to revisit on your way back.
+        The stack class can be implemented by any data structure you want.
+        The stack class needs to provide operations to:
+            push a house
+            pop a house
+            display all the houses
+
+You are required to provide the following functions in both of above classes if
+dynamically allocated memory is used:
+    -constructors including copy constructor.
+    -destructor. Use valgrind to check you don't have memory leaks.
+    -overload '=' operator so that a "deep copy" will be obtained.
+
+The client program needs to provide a menu-based command line user interface.
+All the keyboard input should be done in the client program instead of the ADT.
+You don't have to do extensive error checking this term. You may assume that
+only valid data will be entered.
+
+The queue should be populated with data in an external file (in the same directory
+as the source files) when the program starts. You don't need a writeOut function
+in this program because I want to keep the data file unchanged to avoid entering
+house information from keyboard. Please don't prompt user for external file name!
+You can refer to the sample code for how to read/write external files in your list
+class.
