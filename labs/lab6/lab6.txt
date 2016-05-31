@@ -1,0 +1,72 @@
+//Author: Tyler Bieker
+//CS 260
+//Assignment: Lab 6
+//Date: 05/30/2016
+//Sources: Textbook
+
+int height(node * root){
+    //recursively computer height of binary tree
+    if(root == nullptr){
+        return 0;
+    }else{
+        int left;
+        int right;
+        int treeHeight;
+        left = height(root->left);
+        right = height(root->right);
+        if(left > right){
+            treeHeight = 1 + left;
+        }else{
+            treeHeight = 1 + right;
+        }
+        return treeHeight;
+    }
+}
+Welcome to the Proficiency Demo!
+
+Inorder traversal: 6  7  39  42  54  68  94  100  100  113  133  139  151  156  168  183  195  222  231  243  243  
+
+Level 1: 243
+Level 2: 94 and 243
+Level 3: 7 and 151
+Level 4: 6 and 42
+Level 5: 39 and 54
+Level 6: 68
+Level 4: 100 and 195
+Level 5: 139
+Level 6: 113
+Level 7: 100 and 133
+Level 5: 183 and 231
+Level 6: 168
+Level 7: 156
+Level 6: 222
+
+
+This tree contains 21 items 
+
+Number of nodes: 21
+Sum of all nodes: 2687
+Height of the tree: 7
+
+
+
+The resulting tree after your function ran is: 
+Inorder traversal: 6  7  39  42  54  68  94  100  100  113  133  139  151  156  168  183  195  222  231  243  243  
+
+Level 1: 243
+Level 2: 94 and 243
+Level 3: 7 and 151
+Level 4: 6 and 42
+Level 5: 39 and 54
+Level 6: 68
+Level 4: 100 and 195
+Level 5: 139
+Level 6: 113
+Level 7: 100 and 133
+Level 5: 183 and 231
+Level 6: 168
+Level 7: 156
+Level 6: 222
+
+
+This tree contains 21 items 
