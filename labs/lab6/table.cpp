@@ -1,6 +1,7 @@
 #include "table.h"
 
 int count(node * root){
+    //recursively compute number of nodes in binary tree
     if(root == nullptr){
         return 0;
     }else{

@@ -1,0 +1,174 @@
+Lab 4 Implementation Hints:
+
+The following discussion assumes the other data structure you choose is a hash table. 
+
+The two data structure store pointers to the data. Here are two sample designs:
+Design A: model the tree and the hashtable in the collection class
+
+struct treeNode
+{
+	data * item;
+	treeNode *left, *right;
+};
+
+struct hashNode
+{
+	data * item;
+	hashNode * next;
+};
+
+class collection
+{
+public:
+	collection();
+	collection(char * fileName);
+	collection(const collection&);
+	~collection();
+	const collection& operator= (const collection&);
+
+	void add(const data&);
+	bool remove(char * name);
+	bool retrieve(char * name, data&)const;
+	bool retrieve(productType, data*)const;
+	void displayByName()const;
+	void displayByProductType()const;
+
+private:
+	treeNode * root;	//the binarytree
+	hashNode ** table;	//the hash table
+	void addToTree(data * ptrItem);
+	void addToTable(data * ptrItem);
+	void removeFromTree(char * name);
+	void removeFromTable(char * name);
+	//private functions for recursive tree implementation
+     ...
+};
+
+Implementation hints for collection class:
+collection (char * fileName)
+{
+	read in each data object from file
+	invoke add function to add each data
+}
+
+void add(const data& item)
+{
+	data * ptrItem = new data;
+	*ptrItem = item;	//make a deep copy
+	
+	addToTree(ptrItem);
+	addToTable(ptrItem);
+}
+
+void remove(char * name)
+{
+	
+	removeFromTree(name);	//deallocate the node from tree
+	removeFromTable(name);	//deallocate the node from table
+	//you need to make sure you only delete data once 
+	//and the deletion should happen in the second remove function
+}
+
+bool retrieve(char * name, data&)const
+{
+	retrieve from the tree
+}
+
+bool retrieve(productType, data*)const
+{
+	retrieve from the hash table. 
+	data * is an array of matching items
+}
+
+void displayByName()const
+{
+	display the tree inorder
+}
+
+void displayByProductType()const
+{
+	display the hash table
+}
+
+Design B: use composition (has-a relationship). A collection has a tree object and a hashtable object
+
+struct treeNode
+{
+	data * item;
+	treeNode *left, *right;
+};
+
+class binarytree
+{
+public:
+	binarytree();
+	...
+	void add(data* ptrItem);	//store pointer to data
+	...
+
+private:
+	treeNode * root;
+	...
+};
+
+struct hashNode
+{
+	data * item;
+	hashNode * next;
+};
+
+class hashTable
+{
+public:
+	hashTable();
+	...
+	void add(data* ptrItem);	//store pointer to data
+	...
+private:
+	hashNode ** table;
+	...
+};
+
+class collection
+{
+public:
+	collection();
+	collection(char * fileName);
+	collection(const collection&);
+	~collection();
+	const collection& operator= (const collection&);
+
+	void add(const data&);
+	bool remove(char * name);
+	bool retrieve(char * name, data&)const;
+	bool retrieve(productType, data*)const;
+	void displayByName()const;
+	void displayByProductType()const;
+
+private:
+	binarytree tree;
+	hashTable table;
+	...
+};
+
+Implementation hint for collection class:
+
+void add(const data& item)
+{
+	data * ptrItem = new data;
+	*ptrItem = item;	//make a deep copy
+	
+	tree.add(ptrItem);
+	table.add(ptrItem);
+}	
+
+
+
+
+Implementation hints for driver:
+driver only needs to have an object of collection:
+collection vendors;
+
+then ask this object to add/remove/retrive/display ...etc.
+
+	

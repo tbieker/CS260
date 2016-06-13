@@ -1,0 +1,80 @@
+//Author: Tyler Bieker
+//CS260
+//Programming Proficiency Test
+//06/09/2016
+
+int countEven(node * head){
+    //recursively count even numbers in doubly
+    //linked list
+    int count = 0;
+    if(head){
+        int test;
+        test = head->data % 2;
+        if(test == 0){
+            count = 1 + countEven(head->next);
+        }else{
+            count = countEven(head->next);
+        }
+    }
+    return count;
+}
+
+
+int removeEven(node *& head){
+    //recursively remove even numbers in doubly
+    //linked list
+    int count = 0;
+    if(head){
+        int test;
+        test = head->data % 2;
+        if(test == 0){
+            count = 1 + removeEven(head->next);
+
+            //if head is root of list
+            if(head->previous == nullptr){
+                node * temp = head;
+                head = head->next;
+                head->previous = nullptr;
+                delete temp;
+            }
+
+            else{
+                node * temp;
+                temp = head;
+
+                //tail of list
+                if(head->next == nullptr){
+                    head = head->previous;
+                    head->next = nullptr;
+                }
+
+                else{
+                    head->next->previous = head->previous;
+                    head = head->next;
+                }
+                delete temp;
+                temp = nullptr;
+            }
+        }else{
+            count = removeEven(head->next);
+        }
+    }
+    return count;
+
+}
+
+Here is the original list: 2 -> 65 -> 58 -> 2 -> 37 -> 23 -> 6 -> 2 -> 55 -> 71 -> 51 -> 39 -> 36 -> 56 -> 2
+
+This list contains 15 number of items
+
+Number of nodes that contains even number in doubly linked list: 8
+After removing the nodes that contain even numbers: 8
+
+
+The resulting list is... 65 -> 37 -> 23 -> 55 -> 71 -> 51 -> 39
+
+
+Now backwards: 39 -> 51 -> 71 -> 55 -> 23 -> 37 -> 65
+
+This list contains 7 number of items
+The sum of all data is: 341
